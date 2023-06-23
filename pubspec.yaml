@@ -27,6 +27,12 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.0.14
+  flutter_local_notifications: ^14.1.1
+  workmanager: ^0.5.1
+
+
+  
+  
 
   
   

@@ -46,12 +46,20 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateColor.resolveWith(
+                              (states) => Color(0xff0e3d7d),
+                            )),
                             onPressed: () async {
                               pa = 1;
                               setState(() {});
                             },
                             child: Text('Current Range')),
                         ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateColor.resolveWith(
+                              (states) => Color(0xff0e3d7d),
+                            )),
                             onPressed: () async {
                               pa = 2;
                               setState(() {});
@@ -63,51 +71,72 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                         ? Column(
                             children: [
                               SizedBox(
-                                height: 40,
+                                height: 80,
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const SizedBox(
-                                    width: 35,
+                                  const Text(
+                                    'Temperature Range',
+                                    style: TextStyle(
+                                        color: Color(0xff0e3d7d),
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                  const Text('Temperature Range'),
                                   const SizedBox(
                                     width: 30,
                                   ),
                                   Text(
-                                      '${AlarmSettingView.mybox.get('tmin')}-${AlarmSettingView.mybox.get('tmax')}')
+                                    '${AlarmSettingView.mybox.get('tmin')}-${AlarmSettingView.mybox.get('tmax')}',
+                                    style: TextStyle(
+                                        color: Color(0xff0e3d7d),
+                                        fontWeight: FontWeight.bold),
+                                  )
                                 ],
                               ),
                               SizedBox(
                                 height: 20,
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const SizedBox(
-                                    width: 35,
+                                  const Text(
+                                    'Oxygen Range',
+                                    style: TextStyle(
+                                        color: Color(0xff0e3d7d),
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                  const Text('Oxygen Range'),
                                   const SizedBox(
-                                    width: 30,
+                                    width: 55,
                                   ),
                                   Text(
-                                      '${AlarmSettingView.mybox.get('o2min')}-${AlarmSettingView.mybox.get('o2max')}')
+                                    '${AlarmSettingView.mybox.get('o2min')}-${AlarmSettingView.mybox.get('o2max')}',
+                                    style: TextStyle(
+                                        color: Color(0xff0e3d7d),
+                                        fontWeight: FontWeight.bold),
+                                  )
                                 ],
                               ),
                               SizedBox(
                                 height: 20,
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const SizedBox(
-                                    width: 35,
+                                  const Text(
+                                    'Acidity Range',
+                                    style: TextStyle(
+                                        color: Color(0xff0e3d7d),
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                  const Text('Acidity Range'),
                                   const SizedBox(
-                                    width: 30,
+                                    width: 77,
                                   ),
                                   Text(
-                                      '${AlarmSettingView.mybox.get('phmin')}-${AlarmSettingView.mybox.get('phmax')}')
+                                    '${AlarmSettingView.mybox.get('phmin')}-${AlarmSettingView.mybox.get('phmax')}',
+                                    style: TextStyle(
+                                        color: Color(0xff0e3d7d),
+                                        fontWeight: FontWeight.bold),
+                                  )
                                 ],
                               )
                             ],
@@ -115,21 +144,34 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                         : pa == 2
                             ? Column(
                                 children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const SizedBox(
-                                        width: 10,
+                                      const Text(
+                                        'temp min',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      const Text('temp min'),
                                       const SizedBox(
-                                        width: 10,
+                                        width: 13,
                                       ),
                                       Text(
-                                          '${AlarmSettingView.mybox.get('tmin')}'),
+                                        '${AlarmSettingView.mybox.get('tmin')}',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'tmin',
@@ -141,6 +183,7 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                           },
                                           icon: Icon(Icons.arrow_downward)),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'tmin',
@@ -154,20 +197,30 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                     ],
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const SizedBox(
-                                        width: 10,
+                                      const Text(
+                                        'temp max',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      const Text('temp max'),
                                       const SizedBox(
-                                        width: 10,
+                                        width: 13,
                                       ),
                                       Text(
-                                          '${AlarmSettingView.mybox.get('tmax')}'),
+                                        '${AlarmSettingView.mybox.get('tmax')}',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'tmax',
@@ -179,6 +232,7 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                           },
                                           icon: Icon(Icons.arrow_downward)),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'tmax',
@@ -192,20 +246,30 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                     ],
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const SizedBox(
-                                        width: 10,
+                                      const Text(
+                                        'acidity min',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      const Text('acidity min'),
                                       const SizedBox(
-                                        width: 10,
+                                        width: 13,
                                       ),
                                       Text(
-                                          '${AlarmSettingView.mybox.get('phmin')}'),
+                                        '${AlarmSettingView.mybox.get('phmin')}',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'phmin',
@@ -217,6 +281,7 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                           },
                                           icon: Icon(Icons.arrow_downward)),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'phmin',
@@ -230,20 +295,30 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                     ],
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const SizedBox(
-                                        width: 10,
+                                      const Text(
+                                        'acidity max',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      const Text('acidity max'),
                                       const SizedBox(
-                                        width: 10,
+                                        width: 13,
                                       ),
                                       Text(
-                                          '${AlarmSettingView.mybox.get('phmax')}'),
+                                        '${AlarmSettingView.mybox.get('phmax')}',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'phmax',
@@ -255,6 +330,7 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                           },
                                           icon: Icon(Icons.arrow_downward)),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'phmax',
@@ -268,20 +344,30 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                     ],
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const SizedBox(
-                                        width: 10,
+                                      const Text(
+                                        'oxygen min',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      const Text('oxygen min'),
                                       const SizedBox(
-                                        width: 10,
+                                        width: 13,
                                       ),
                                       Text(
-                                          '${AlarmSettingView.mybox.get('o2min')}'),
+                                        '${AlarmSettingView.mybox.get('o2min')}',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'o2min',
@@ -293,6 +379,7 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                           },
                                           icon: Icon(Icons.arrow_downward)),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'o2min',
@@ -306,20 +393,30 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                     ],
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const SizedBox(
-                                        width: 10,
+                                      const Text(
+                                        'oxygen max',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      const Text('oxygen max'),
                                       const SizedBox(
-                                        width: 10,
+                                        width: 13,
                                       ),
                                       Text(
-                                          '${AlarmSettingView.mybox.get('o2max')}'),
+                                        '${AlarmSettingView.mybox.get('o2max')}',
+                                        style: TextStyle(
+                                          color: Color(0xff0e3d7d),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'o2max',
@@ -331,6 +428,7 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                           },
                                           icon: Icon(Icons.arrow_downward)),
                                       IconButton(
+                                          color: Colors.white,
                                           onPressed: () {
                                             AlarmSettingView.mybox.put(
                                                 'o2max',

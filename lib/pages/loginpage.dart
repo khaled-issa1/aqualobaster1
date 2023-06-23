@@ -3,6 +3,7 @@ import 'package:aqualobster/appservices/appnavigator.dart';
 import 'package:aqualobster/backend/backendhelper.dart';
 import 'package:aqualobster/pages/homepage.dart';
 import 'package:aqualobster/pages/registerpage.dart';
+import 'package:aqualobster/pages/resetpasspage.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 
@@ -149,6 +150,45 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 12),
                             ),
                           )),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 35),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 135,
+                      ),
+                      Container(
+                        child: const Text(
+                          'or',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 12, 47, 73),
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      InkWell(
+                          onTap: () {
+                            AppNavigator.appNavigator
+                                .push(ResetPassPage.routeName);
+                          },
+                          child: Container(
+                            child: const Text(
+                              'reset password',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 12, 47, 73),
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 12),
+                            ),
+                          )),
+                      SizedBox(
+                        width: 50,
+                      )
                     ],
                   ),
                 ),

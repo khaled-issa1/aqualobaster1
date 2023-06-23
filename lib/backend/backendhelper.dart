@@ -9,6 +9,15 @@ class BackendHelper {
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  Future<String?> passreset(String ss) async {
+    try {
+      await auth.sendPasswordResetEmail(email: ss);
+      return null;
+    } catch (e) {
+      return '$e';
+    }
+  }
+
   Future<String?> signup(String em, String pas) async {
     try {
       await auth.createUserWithEmailAndPassword(email: em, password: pas);

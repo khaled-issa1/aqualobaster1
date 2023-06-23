@@ -58,7 +58,7 @@ class MainView extends StatelessWidget {
                               ),
                               Text(
                                 snapshot.data!.snapshot
-                                    .child('myvariables/temp')
+                                    .child('sensors/temperature')
                                     .value
                                     .toString(),
                                 style: const TextStyle(
@@ -117,9 +117,10 @@ class MainView extends StatelessWidget {
                               ),
                               Text(
                                 snapshot.data!.snapshot
-                                    .child('myvariables/ph')
+                                    .child('sensors/ph')
                                     .value
-                                    .toString(),
+                                    .toString()
+                                    .substring(0, 4),
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
@@ -146,66 +147,7 @@ class MainView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
-                  ),
-                  Card(
-                    color: const Color.fromARGB(255, 12, 47, 73),
-                    child: SizedBox(
-                      width: 250,
-                      height: 100,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            children: [
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              const Text(
-                                'Oxygen:',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                snapshot.data!.snapshot
-                                    .child('myvariables/temp')
-                                    .value
-                                    .toString(),
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 50,
-                          ),
-                          const SizedBox(
-                            width: 60,
-                            height: 100,
-                            child: Image(
-                              image: AssetImage('images/ticon.png'),
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 25,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
+                    height: 50,
                   )
                 ],
               ),

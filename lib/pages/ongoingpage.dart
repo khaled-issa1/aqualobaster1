@@ -5,6 +5,7 @@ import 'package:aqualobster/pages/homepage.dart';
 import 'package:aqualobster/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:workmanager/workmanager.dart';
 
 class OnGoingPage extends StatelessWidget {
   static String routeName = 'OnGoingPage';
@@ -87,9 +88,12 @@ class OnGoingPage extends StatelessWidget {
                       await SPHelper.spHelper.sethivebase(true);
                     } else {}
                     if (ss == true) {
-                      AppNavigator.appNavigator.replace(HomePage.routeName);
+                      await Workmanager().registerOneOffTask('aa', 'taskName1');
+
+                      //AppNavigator.appNavigator.replace(HomePage.routeName);
                     } else {
-                      AppNavigator.appNavigator.replace(LoginPage.routeName);
+                      await Workmanager().registerOneOffTask('aa', 'taskName1');
+                      //AppNavigator.appNavigator.replace(LoginPage.routeName);
                     }
                   },
                   child: const Text(
