@@ -9,13 +9,13 @@ class ProfileView extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 100,
+            height: 50,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: SizedBox(
               width: double.infinity,
-              height: 365,
+              height: 450,
               child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
@@ -66,17 +66,14 @@ class ProfileView extends StatelessWidget {
                           color: Colors.white),
                       child: TextButton(
                         onPressed: () async {
-                          String? s =
-                              await BackendHelper.backendHelper.logout();
-                          if (s != null) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text('$s'),
-                              duration: const Duration(seconds: 30),
-                            ));
-                          }
+                          await Workmanager().registerOneOffTask(
+                              'tasktwo', 'AlarmNotification1',
+                              constraints: Constraints(
+                                networkType: NetworkType.connected,
+                              ));
                         },
                         child: const Text(
-                          'Sign out',
+                          'Farm Notification',
                           style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Color(0xff0e3d7d)),
@@ -95,14 +92,17 @@ class ProfileView extends StatelessWidget {
                           color: Colors.white),
                       child: TextButton(
                         onPressed: () async {
-                          await Workmanager().registerOneOffTask(
-                              'tasktwo', 'AlarmNotification1',
-                              constraints: Constraints(
-                                networkType: NetworkType.connected,
-                              ));
+                          String? s =
+                              await BackendHelper.backendHelper.logout();
+                          if (s != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('$s'),
+                              duration: const Duration(seconds: 30),
+                            ));
+                          }
                         },
                         child: const Text(
-                          'Farm Notification',
+                          'Sign out',
                           style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Color(0xff0e3d7d)),

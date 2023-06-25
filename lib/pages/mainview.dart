@@ -33,7 +33,7 @@ class MainView extends StatelessWidget {
                   Card(
                     color: const Color.fromARGB(255, 12, 47, 73),
                     child: SizedBox(
-                      width: 250,
+                      width: 280,
                       height: 100,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -92,7 +92,7 @@ class MainView extends StatelessWidget {
                   Card(
                     color: const Color.fromARGB(255, 12, 47, 73),
                     child: SizedBox(
-                      width: 250,
+                      width: 280,
                       height: 100,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,

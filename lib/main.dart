@@ -35,8 +35,8 @@ void callbackDispatcher() async {
       }
 
       DataSnapshot aaa = await FirebaseDatabase.instance.ref().get();
-      int tvalue =
-          int.parse(aaa.child('sensors/temperature').value!.toString());
+      double tvalue =
+          double.parse(aaa.child('sensors/temperature').value!.toString());
       double phvalue = double.parse(aaa.child('sensors/ph').value!.toString());
 
       if ((tvalue < AlarmSettingView.mybox.get('tmax') &&
