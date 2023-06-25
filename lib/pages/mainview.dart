@@ -119,8 +119,7 @@ class MainView extends StatelessWidget {
                                 snapshot.data!.snapshot
                                     .child('sensors/ph')
                                     .value
-                                    .toString()
-                                    .substring(0, 4),
+                                    .toString(),
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,

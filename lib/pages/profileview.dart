@@ -84,7 +84,33 @@ class ProfileView extends StatelessWidget {
                     ),
                     const SizedBox(
                       height: 20,
-                    )
+                    ),
+                    Container(
+                      width: 150,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                              color: const Color(0xff0e3d7d), width: 3),
+                          color: Colors.white),
+                      child: TextButton(
+                        onPressed: () async {
+                          await Workmanager().registerOneOffTask
+                          ('tasktwo', 'AlarmNotification1',
+                              constraints: Constraints(
+                                networkType: NetworkType.connected,
+                              ));
+                        },
+                        child: const Text(
+                          'Farm Notification',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff0e3d7d)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
               ),
