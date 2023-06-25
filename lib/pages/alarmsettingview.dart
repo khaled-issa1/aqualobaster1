@@ -100,29 +100,6 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    'Oxygen Range',
-                                    style: TextStyle(
-                                        color: Color(0xff0e3d7d),
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(
-                                    width: 55,
-                                  ),
-                                  Text(
-                                    '${AlarmSettingView.mybox.get('o2min')}-${AlarmSettingView.mybox.get('o2max')}',
-                                    style: TextStyle(
-                                        color: Color(0xff0e3d7d),
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
                                     'Acidity Range',
                                     style: TextStyle(
                                         color: Color(0xff0e3d7d),
@@ -145,7 +122,7 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                             ? Column(
                                 children: [
                                   SizedBox(
-                                    height: 10,
+                                    height: 50,
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -336,104 +313,6 @@ class _AlarmSettingViewState extends State<AlarmSettingView> {
                                                 'phmax',
                                                 (AlarmSettingView.mybox
                                                         .get('phmax') +
-                                                    1));
-
-                                            setState(() {});
-                                          },
-                                          icon: Icon(Icons.arrow_upward)),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Text(
-                                        'oxygen min',
-                                        style: TextStyle(
-                                          color: Color(0xff0e3d7d),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 13,
-                                      ),
-                                      Text(
-                                        '${AlarmSettingView.mybox.get('o2min')}',
-                                        style: TextStyle(
-                                          color: Color(0xff0e3d7d),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      IconButton(
-                                          color: Colors.white,
-                                          onPressed: () {
-                                            AlarmSettingView.mybox.put(
-                                                'o2min',
-                                                (AlarmSettingView.mybox
-                                                        .get('o2min') -
-                                                    1));
-
-                                            setState(() {});
-                                          },
-                                          icon: Icon(Icons.arrow_downward)),
-                                      IconButton(
-                                          color: Colors.white,
-                                          onPressed: () {
-                                            AlarmSettingView.mybox.put(
-                                                'o2min',
-                                                (AlarmSettingView.mybox
-                                                        .get('o2min') +
-                                                    1));
-
-                                            setState(() {});
-                                          },
-                                          icon: Icon(Icons.arrow_upward)),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Text(
-                                        'oxygen max',
-                                        style: TextStyle(
-                                          color: Color(0xff0e3d7d),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 13,
-                                      ),
-                                      Text(
-                                        '${AlarmSettingView.mybox.get('o2max')}',
-                                        style: TextStyle(
-                                          color: Color(0xff0e3d7d),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      IconButton(
-                                          color: Colors.white,
-                                          onPressed: () {
-                                            AlarmSettingView.mybox.put(
-                                                'o2max',
-                                                (AlarmSettingView.mybox
-                                                        .get('o2max') -
-                                                    1));
-
-                                            setState(() {});
-                                          },
-                                          icon: Icon(Icons.arrow_downward)),
-                                      IconButton(
-                                          color: Colors.white,
-                                          onPressed: () {
-                                            AlarmSettingView.mybox.put(
-                                                'o2max',
-                                                (AlarmSettingView.mybox
-                                                        .get('o2max') +
                                                     1));
 
                                             setState(() {});

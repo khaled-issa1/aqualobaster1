@@ -33,10 +33,10 @@ void callbackDispatcher() async {
     int tvalue = int.parse(aaa.child('sensors/temperature').value!.toString());
     double phvalue = double.parse(aaa.child('sensors/ph').value!.toString());
 
-    if (tvalue > AlarmSettingView.mybox.get('tmax') ||
-        tvalue < AlarmSettingView.mybox.get('tmin') ||
-        tvalue > AlarmSettingView.mybox.get('phmax') ||
-        tvalue < AlarmSettingView.mybox.get('phmin')) {
+    if ((tvalue > AlarmSettingView.mybox.get('tmax') &&
+            tvalue < AlarmSettingView.mybox.get('tmin')) ||
+        (tvalue > AlarmSettingView.mybox.get('phmax') &&
+            tvalue < AlarmSettingView.mybox.get('phmin'))) {
       PermissionStatus a = await Permission.notification.status;
       if (a == PermissionStatus.granted) {
         LN.showMyNotification(
