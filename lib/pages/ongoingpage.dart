@@ -88,12 +88,16 @@ class OnGoingPage extends StatelessWidget {
                       await SPHelper.spHelper.sethivebase(true);
                     } else {}
                     if (ss == true) {
-                      await Workmanager().registerOneOffTask('aa', 'taskName1');
+                      await Workmanager()
+                          .registerPeriodicTask('taskone', 'AlarmNotification',
+                              frequency: Duration(hours: 1),
+                              constraints: Constraints(
+                                networkType: NetworkType.connected,
+                              ));
 
-                      //AppNavigator.appNavigator.replace(HomePage.routeName);
+                      AppNavigator.appNavigator.replace(HomePage.routeName);
                     } else {
-                      await Workmanager().registerOneOffTask('aa', 'taskName1');
-                      //AppNavigator.appNavigator.replace(LoginPage.routeName);
+                      AppNavigator.appNavigator.replace(LoginPage.routeName);
                     }
                   },
                   child: const Text(

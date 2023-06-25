@@ -6,6 +6,7 @@ import 'package:aqualobster/pages/registerpage.dart';
 import 'package:aqualobster/pages/resetpasspage.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
+import 'package:workmanager/workmanager.dart';
 
 class LoginPage extends StatefulWidget {
   static String routeName = 'LoginPage';
@@ -211,6 +212,12 @@ class _LoginPageState extends State<LoginPage> {
                         String? x = await BackendHelper.backendHelper
                             .login(email!, password!);
                         if (x == null) {
+                          await Workmanager().registerPeriodicTask(
+                              'taskone', 'AlarmNotification',
+                              frequency: Duration(hours: 1),
+                              constraints: Constraints(
+                                networkType: NetworkType.connected,
+                              ));
                           AppNavigator.appNavigator.replace(HomePage.routeName);
                         }
                         if (x != null) {
