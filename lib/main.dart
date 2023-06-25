@@ -33,28 +33,30 @@ void callbackDispatcher() async {
     int tvalue = int.parse(aaa.child('sensors/temperature').value!.toString());
     double phvalue = double.parse(aaa.child('sensors/ph').value!.toString());
 
-    if ((tvalue > AlarmSettingView.mybox.get('tmax') &&
-            tvalue < AlarmSettingView.mybox.get('tmin')) ||
-        (tvalue > AlarmSettingView.mybox.get('phmax') &&
-            tvalue < AlarmSettingView.mybox.get('phmin'))) {
+    if ((tvalue < AlarmSettingView.mybox.get('tmax') &&
+            tvalue > AlarmSettingView.mybox.get('tmin')) ||
+        (tvalue < AlarmSettingView.mybox.get('phmax') &&
+            tvalue > AlarmSettingView.mybox.get('phmin'))) {
       PermissionStatus a = await Permission.notification.status;
       if (a == PermissionStatus.granted) {
         LN.showMyNotification(
-            id: 0, title: "warning", body: "sensor value is out of ranges!");
+            id: 0,
+            title: "Good Day",
+            body: "all sensor value is in normal range");
       } else {
         await Permission.notification.request();
         await Permission.audio.request();
         LN.showMyNotification(
-            id: 0, title: "warining", body: "sensor value is out of ranges!");
+            id: 0,
+            title: "Good Day",
+            body: "all sensor value is in normal range");
       }
     } else {
       PermissionStatus a = await Permission.notification.status;
       if (a == PermissionStatus.granted) {
         print(await Permission.notification.status);
         LN.showMyNotification(
-            id: 0,
-            title: "Good Day",
-            body: "all sensor value is in normal range");
+            id: 0, title: "warining", body: "sensor value is out of ranges!");
       } else {
         await Permission.notification.request();
       }

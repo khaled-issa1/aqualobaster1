@@ -83,8 +83,7 @@ class OnGoingPage extends StatelessWidget {
                       await AlarmSettingView.mybox.put('tmax', 40);
                       await AlarmSettingView.mybox.put('phmin', 1);
                       await AlarmSettingView.mybox.put('phmax', 7);
-                      await AlarmSettingView.mybox.put('o2min', 70);
-                      await AlarmSettingView.mybox.put('o2max', 100);
+
                       await SPHelper.spHelper.sethivebase(true);
                     } else {}
                     if (ss == true) {
