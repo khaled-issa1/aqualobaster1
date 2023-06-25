@@ -1,5 +1,6 @@
 import 'package:aqualobster/backend/backendhelper.dart';
 import 'package:flutter/material.dart';
+import 'package:workmanager/workmanager.dart';
 
 class ProfileView extends StatelessWidget {
   @override
@@ -94,8 +95,8 @@ class ProfileView extends StatelessWidget {
                           color: Colors.white),
                       child: TextButton(
                         onPressed: () async {
-                          await Workmanager().registerOneOffTask
-                          ('tasktwo', 'AlarmNotification1',
+                          await Workmanager().registerOneOffTask(
+                              'tasktwo', 'AlarmNotification1',
                               constraints: Constraints(
                                 networkType: NetworkType.connected,
                               ));
