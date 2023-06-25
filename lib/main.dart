@@ -16,51 +16,71 @@ import 'firebase_options.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 void callbackDispatcher() async {
   Workmanager().executeTask((taskName, inputData) async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
     LocalNotify LN = LocalNotify();
 
-    if (Firebase.apps.isEmpty) {
-      await Firebase.initializeApp();
-      final directory1 = await path_provider.getApplicationDocumentsDirectory();
-      Hive.init(directory1.path);
-      await Hive.openBox('myalarmbox');
-      LN.initPackage();
-    }
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      if (Firebase.apps.isEmpty) {
+        await Firebase.initializeApp();
+        final directory1 =
+            await path_provider.getApplicationDocumentsDirectory();
+        Hive.init(directory1.path);
+        await Hive.openBox('myalarmbox');
+        LN.initPackage();
+      }
 
-    DataSnapshot aaa = await FirebaseDatabase.instance.ref().get();
-    int tvalue = int.parse(aaa.child('sensors/temperature').value!.toString());
-    double phvalue = double.parse(aaa.child('sensors/ph').value!.toString());
+      DataSnapshot aaa = await FirebaseDatabase.instance.ref().get();
+      int tvalue =
+          int.parse(aaa.child('sensors/temperature').value!.toString());
+      double phvalue = double.parse(aaa.child('sensors/ph').value!.toString());
 
-    if ((tvalue < AlarmSettingView.mybox.get('tmax') &&
-            tvalue > AlarmSettingView.mybox.get('tmin')) ||
-        (tvalue < AlarmSettingView.mybox.get('phmax') &&
-            tvalue > AlarmSettingView.mybox.get('phmin'))) {
-      PermissionStatus a = await Permission.notification.status;
-      if (a == PermissionStatus.granted) {
-        LN.showMyNotification(
-            id: 0,
-            title: "Good Day",
-            body: "all sensor value is in normal range");
+      if ((tvalue < AlarmSettingView.mybox.get('tmax') &&
+              tvalue > AlarmSettingView.mybox.get('tmin')) ||
+          (tvalue < AlarmSettingView.mybox.get('phmax') &&
+              tvalue > AlarmSettingView.mybox.get('phmin'))) {
+        PermissionStatus a = await Permission.notification.status;
+        if (a == PermissionStatus.granted) {
+          LN.showMyNotification(
+              id: 0,
+              title: "Good Day",
+              body: "all sensor value is in normal range");
+        } else {
+          await Permission.notification.request();
+          await Permission.audio.request();
+          LN.showMyNotification(
+              id: 0,
+              title: "Good Day",
+              body: "all sensor value is in normal range");
+        }
       } else {
-        await Permission.notification.request();
-        await Permission.audio.request();
-        LN.showMyNotification(
-            id: 0,
-            title: "Good Day",
-            body: "all sensor value is in normal range");
+        PermissionStatus a = await Permission.notification.status;
+        if (a == PermissionStatus.granted) {
+          print(await Permission.notification.status);
+          LN.showMyNotification(
+              id: 0, title: "warining", body: "sensor value is out of ranges!");
+        } else {
+          await Permission.notification.request();
+        }
       }
     } else {
       PermissionStatus a = await Permission.notification.status;
       if (a == PermissionStatus.granted) {
-        print(await Permission.notification.status);
+        LN.initPackage();
         LN.showMyNotification(
-            id: 0, title: "warining", body: "sensor value is out of ranges!");
+            id: 0,
+            title: "wifi ",
+            body:
+                "not enable to monitor farm situation because wifi connection!");
       } else {
         await Permission.notification.request();
       }
     }
+
     return Future.value(true);
   });
 }
@@ -81,7 +101,6 @@ void main() async {
       .whenComplete(() async {
     await Workmanager().initialize(
       callbackDispatcher,
-      isInDebugMode: true,
     );
   });
 }
