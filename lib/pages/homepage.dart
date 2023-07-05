@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:aqualobster/customWidgets/AppDrawer.dart';
 import 'package:aqualobster/pages/alarmsettingview.dart';
+import 'package:aqualobster/pages/historypage.dart';
 import 'package:aqualobster/pages/mainview.dart';
 import 'package:aqualobster/pages/profileview.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 class HomePage extends StatelessWidget {
   static String routeName = 'HomePage';
   GlobalKey<ScaffoldState> gsk = GlobalKey<ScaffoldState>();
-  PageController pageController = PageController(initialPage: 1);
+  PageController pageController = PageController(initialPage: 2);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +20,8 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: const Color.fromARGB(255, 12, 47, 73),
         items: const [
-          TabItem(icon: Icons.menu, title: 'Menu'),
           TabItem(icon: Icons.alarm, title: 'Alarm'),
+          TabItem(icon: Icons.history, title: 'History'),
           TabItem(icon: Icons.home_outlined, title: 'Home'),
           TabItem(icon: Icons.person, title: 'Profile'),
           TabItem(icon: Icons.exit_to_app, title: 'Exit'),
@@ -28,13 +29,13 @@ class HomePage extends StatelessWidget {
         initialActiveIndex: 2,
         onTap: (i) {
           if (i == 0) {
-            gsk.currentState!.openDrawer();
-          } else if (i == 1) {
             pageController.jumpToPage(0);
-          } else if (i == 2) {
+          } else if (i == 1) {
             pageController.jumpToPage(1);
-          } else if (i == 3) {
+          } else if (i == 2) {
             pageController.jumpToPage(2);
+          } else if (i == 3) {
+            pageController.jumpToPage(3);
           } else if (i == 4) {
             showDialog(
                 context: context,
@@ -95,6 +96,7 @@ class HomePage extends StatelessWidget {
         onPageChanged: (index) {},
         children: [
           AlarmSettingView(),
+          HistoryPage(),
           MainView(),
           ProfileView(),
         ],
