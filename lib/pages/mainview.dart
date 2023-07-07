@@ -58,7 +58,7 @@ class MainView extends StatelessWidget {
                               ),
                               Text(
                                 snapshot.data!.snapshot
-                                    .child('sensors/temperature')
+                                    .child('sensors/current_temperature')
                                     .value
                                     .toString(),
                                 style: const TextStyle(
@@ -117,7 +117,7 @@ class MainView extends StatelessWidget {
                               ),
                               Text(
                                 snapshot.data!.snapshot
-                                    .child('sensors/ph')
+                                    .child('sensors/current_ph')
                                     .value
                                     .toString(),
                                 style: const TextStyle(
