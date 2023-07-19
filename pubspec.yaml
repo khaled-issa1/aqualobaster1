@@ -33,6 +33,7 @@ dependencies:
   permission_handler: ^10.3.0
   connectivity_plus: '2.3.9'
   timeline_tile: ^2.0.0
+  fl_chart: '0.62.0'
   
   
 
