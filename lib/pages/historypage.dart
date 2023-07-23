@@ -32,15 +32,15 @@ class HistoryPage extends StatelessWidget {
                         height: 250,
                         child: LineChart(LineChartData(
                             titlesData: FlTitlesData(
-                              topTitles:
-                                  AxisTitles(axisNameWidget: Text('time')),
+                              topTitles: AxisTitles(
+                                  axisNameWidget: Text('time (Hours)')),
                               rightTitles: AxisTitles(
                                   axisNameWidget: Text('temperature')),
                             ),
                             minX: 1,
-                            minY: 15,
+                            minY: 20,
                             maxX: 12,
-                            maxY: 45,
+                            maxY: 40,
                             lineBarsData: [
                               LineChartBarData(spots: [
                                 FlSpot(
@@ -135,15 +135,15 @@ class HistoryPage extends StatelessWidget {
                         height: 250,
                         child: LineChart(LineChartData(
                             titlesData: FlTitlesData(
-                              topTitles:
-                                  AxisTitles(axisNameWidget: Text('time')),
+                              topTitles: AxisTitles(
+                                  axisNameWidget: Text('time (Hours)')),
                               rightTitles:
                                   AxisTitles(axisNameWidget: Text('Acidity')),
                             ),
                             minX: 1,
-                            minY: 0,
+                            minY: 5,
                             maxX: 12,
-                            maxY: 12,
+                            maxY: 9,
                             lineBarsData: [
                               LineChartBarData(spots: [
                                 FlSpot(
@@ -218,6 +218,58 @@ class HistoryPage extends StatelessWidget {
                                         .child('sensors/history/hour_11/ph')
                                         .value
                                         .toString())),
+                              ]),
+                            ])),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 250,
+                        child: LineChart(LineChartData(
+                            titlesData: FlTitlesData(
+                              topTitles: AxisTitles(
+                                  axisNameWidget: Text('time (Days)')),
+                              rightTitles: AxisTitles(
+                                  axisNameWidget: Text('temperature')),
+                            ),
+                            minX: 1,
+                            minY: 30,
+                            maxX: 7,
+                            maxY: 40,
+                            lineBarsData: [
+                              LineChartBarData(spots: [
+                                FlSpot(1, 32),
+                                FlSpot(2, 30),
+                                FlSpot(3, 39),
+                                FlSpot(4, 37),
+                                FlSpot(5, 37),
+                                FlSpot(6, 39),
+                                FlSpot(7, 36),
+                              ]),
+                            ])),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 250,
+                        child: LineChart(LineChartData(
+                            titlesData: FlTitlesData(
+                              topTitles: AxisTitles(
+                                  axisNameWidget: Text('time (Days)')),
+                              rightTitles:
+                                  AxisTitles(axisNameWidget: Text('Acidity')),
+                            ),
+                            minX: 1,
+                            minY: 5,
+                            maxX: 7,
+                            maxY: 9,
+                            lineBarsData: [
+                              LineChartBarData(spots: [
+                                FlSpot(1, 7.1),
+                                FlSpot(2, 5),
+                                FlSpot(3, 7.5),
+                                FlSpot(4, 6),
+                                FlSpot(5, 8),
+                                FlSpot(6, 7.1),
+                                FlSpot(7, 7.7),
                               ]),
                             ])),
                       ),
